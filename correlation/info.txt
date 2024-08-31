@@ -1,0 +1,26 @@
+Correlation values are typically categorized based on their strength. Here's a common way to interpret the correlation range:
+
+### Correlation Ranges:
+1. **Low Correlation:**
+   - **Range:** `0.0` to `0.3` (absolute value)
+   - **Interpretation:** Little to no linear relationship.
+
+2. **Moderate (or Good) Correlation:**
+   - **Range:** `0.3` to `0.7` (absolute value)
+   - **Interpretation:** A moderate relationship where variables show some degree of linear dependence.
+
+3. **High Correlation:**
+   - **Range:** `0.7` to `1.0` (absolute value)
+   - **Interpretation:** Strong linear relationship, where one variable strongly predicts the other.
+
+### Detailed Interpretation:
+- **Perfect Correlation (`1.0` or `-1.0`)**: Indicates a perfect linear relationship, either positive or negative.
+- **High Correlation (`0.7` to `1.0` or `-0.7` to `-1.0`)**: Indicates a strong linear relationship. As one variable increases or decreases, the other does as well, predictably.
+- **Moderate Correlation (`0.3` to `0.7` or `-0.3` to `-0.7`)**: Indicates a moderate linear relationship. There is a noticeable but not perfect relationship.
+- **Low Correlation (`0.0` to `0.3` or `-0.0` to `-0.3`)**: Indicates a weak or negligible linear relationship. Changes in one variable do not predict changes in the other in a linear manner.
+
+### Note:
+- **Positive Correlation (`0` to `1`)**: As one variable increases, the other tends to increase.
+- **Negative Correlation (`-1` to `0`)**: As one variable increases, the other tends to decrease.
+
+This classification helps in understanding the strength of relationships between variables in a dataset.
