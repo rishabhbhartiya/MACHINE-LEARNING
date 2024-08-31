@@ -1,0 +1,22 @@
+def count_columns_by_dtype(data, dtype):
+    """
+    Counts the number of columns with a specific data type.
+
+    Parameters:
+    - data: The DataFrame to analyze.
+    - dtype: The data type to count (e.g., 'int64', 'float64', 'object').
+
+    Returns:
+    - int: The number of columns with the specified data type.
+    """
+    return data.select_dtypes(include=[dtype]).shape[1]
+
+# Example usage
+int_columns_count = count_columns_by_dtype(data, 'int64')
+float_columns_count = count_columns_by_dtype(data, 'float64')
+object_columns_count = count_columns_by_dtype(data, 'object')
+
+# Display the results
+print(f"Number of int64 columns: {int_columns_count}")
+print(f"Number of float64 columns: {float_columns_count}")
+print(f"Number of object columns: {object_columns_count}")
