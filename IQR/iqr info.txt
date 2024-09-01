@@ -1,0 +1,45 @@
+#Calculate the IQR for each column
+Q1 = data.quantile(0.25)
+Q3 = data.quantile(0.75)
+IQR = Q3 - Q1
+
+#Determine the outlier boundaries
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+#Identify outliers for each column
+outliers = (data < lower_bound) | (data > upper_bound)
+
+#Remove the outliers
+data_clean = data[~outliers.any(axis=1)]
+
+#Cap the outliers
+data_capped = data.copy()
+data_capped = data_capped.clip(lower=lower_bound, upper=upper_bound, axis=1)
+
+
+
+# Create a figure and axis
+plt.figure(figsize=(36, 40))
+
+# Plot the original data
+plt.subplot(3, 1, 1)
+plt.plot(num_data, marker='o')
+plt.title('Original Data')
+plt.legend(data.columns)
+
+# Plot the data with outliers removed
+plt.subplot(3, 1, 2)
+plt.plot(data_clean, marker='o')
+plt.title('Data with Outliers Removed')
+plt.legend(data_clean.columns)
+
+# Plot the data with outliers capped
+plt.subplot(3, 1, 3)
+plt.plot(data_capped, marker='o')
+plt.title('Data with Outliers Capped')
+plt.legend(data_capped.columns)
+
+# Show the plots
+plt.tight_layout()
+plt.show()
