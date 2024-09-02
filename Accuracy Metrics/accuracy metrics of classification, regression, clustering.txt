@@ -1,0 +1,78 @@
+When evaluating machine learning models, especially regression models (since you're using `r2_score`), there are various metrics you can use depending on the type of model and the specific problem you're working on. Here’s a breakdown of common metrics for both regression and classification problems:
+
+### 1. **Regression Metrics**
+   - **Mean Absolute Error (MAE):**
+     - Measures the average magnitude of errors in a set of predictions, without considering their direction.
+     - Formula: \( MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| \)
+   - **Mean Squared Error (MSE):**
+     - Measures the average of the squares of the errors—that is, the average squared difference between the estimated values and the actual value.
+     - Formula: \( MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)
+   - **Root Mean Squared Error (RMSE):**
+     - The square root of MSE. It represents the standard deviation of the prediction errors.
+     - Formula: \( RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} \)
+   - **Mean Absolute Percentage Error (MAPE):**
+     - Measures the size of the error in percentage terms.
+     - Formula: \( MAPE = \frac{1}{n} \sum_{i=1}^{n} \left|\frac{y_i - \hat{y}_i}{y_i}\right| \times 100 \)
+   - **R² Score (Coefficient of Determination):**
+     - Indicates how well the model explains the variance in the target variable. Higher is better.
+     - Formula: \( R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} \)
+   - **Adjusted R² Score:**
+     - Adjusted for the number of predictors in the model, useful when comparing models with a different number of predictors.
+
+### 2. **Classification Metrics**
+   - **Accuracy:**
+     - The proportion of correct predictions (true positives and true negatives) out of the total predictions.
+     - Formula: \( \text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}} \)
+   - **Precision:**
+     - The proportion of true positive predictions out of all positive predictions.
+     - Formula: \( \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} \)
+   - **Recall (Sensitivity or True Positive Rate):**
+     - The proportion of actual positives that were correctly identified.
+     - Formula: \( \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} \)
+   - **F1-Score:**
+     - The harmonic mean of precision and recall, useful when you need a balance between them.
+     - Formula: \( F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \)
+   - **Area Under the ROC Curve (AUC-ROC):**
+     - Measures the ability of the model to distinguish between classes. A higher AUC indicates a better model.
+   - **Confusion Matrix:**
+     - A matrix showing the actual vs. predicted classifications, used to understand the performance of a classification algorithm.
+
+### 3. **Clustering Metrics**
+   - **Silhouette Score:**
+     - Measures how similar an object is to its own cluster compared to other clusters.
+   - **Davies-Bouldin Index:**
+     - Measures the average "similarity ratio" of each cluster with its most similar cluster. Lower is better.
+   - **Calinski-Harabasz Index:**
+     - Ratio of the sum of between-cluster dispersion and within-cluster dispersion.
+
+### 4. **Other Metrics**
+   - **Log Loss:**
+     - Used in classification to measure the uncertainty of the predictions. It penalizes false classifications with a logarithmic function.
+   - **Explained Variance Score:**
+     - Measures the proportion to which a model accounts for the variation of a given dataset.
+
+You can calculate these metrics using libraries like `scikit-learn` in Python. Here’s an example of how to implement some of these metrics:
+
+```python
+from sklearn.metrics import mean_absolute_error, mean_squared_error, explained_variance_score
+
+# MAE
+mae = mean_absolute_error(y_test, y_pred)
+
+# MSE
+mse = mean_squared_error(y_test, y_pred)
+
+# RMSE
+rmse = mean_squared_error(y_test, y_pred, squared=False)  # squared=False gives the square root
+
+# Explained Variance Score
+explained_variance = explained_variance_score(y_test, y_pred)
+
+# Displaying the metrics
+print(f'MAE: {mae:.4f}')
+print(f'MSE: {mse:.4f}')
+print(f'RMSE: {rmse:.4f}')
+print(f'Explained Variance: {explained_variance:.4f}')
+```
+
+This allows you to comprehensively evaluate and compare your machine learning models based on multiple criteria.
